@@ -1,4 +1,5 @@
-/* Pricing layout */
+@charset "UTF-8";
+/* Layout */
 .pricing-row {
   justify-content: center;
 }
@@ -8,43 +9,137 @@
   justify-content: center;
 }
 
-/* Card structure */
+/* Card */
 .pricing-card {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 420px;
+  height: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
-.pricing-card .card-footer {
-  margin-top: auto;
+/* Header stays natural height */
+.pricing-header {
+  padding: 1.5rem;
+  text-align: center;
 }
 
-/* Featured card (desktop only) */
-@media (min-width: 500px) {
+/* Divider ALWAYS stays aligned */
+.pricing-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0 1.5rem;
+}
+
+/* Content pushes button to bottom */
+.pricing-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 1.5rem;
+}
+
+.pricing-content ul {
+  flex-grow: 1;
+}
+
+/* Featured card offset — desktop only */
+@media (min-width: 800px) {
   .pricing-card.featured {
     transform: translateY(-12px);
   }
 }
-/* Tablet adjustments */
-@media (max-width: 1199.98px) {
-  .pricing-card {
-    max-width: 520px;
+/* Mobile tightening */
+@media (max-width: 575.98px) {
+  .pricing-header,
+  .pricing-content {
+    padding: 1.25rem;
   }
   .pricing-card.featured {
     transform: none;
   }
 }
-/* Mobile tightening */
+/* ===== Pricing Cards (stable across breakpoints) ===== */
+.pricing-card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  overflow: hidden; /* IMPORTANT: makes the gray area touch the bottom cleanly */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Fixed header area so the divider lines up across cards */
+.pricing-head {
+  min-height: 210px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: #fff;
+}
+
+/* The divider line you actually want (consistent position) */
+.pricing-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 0;
+}
+
+/* Gray area that must reach the bottom */
+.pricing-foot {
+  flex: 1;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Clean list layout (prevents weird “one word per line” wrapping) */
+.pricing-list li {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  column-gap: 0.75rem;
+  align-items: start;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-list li span {
+  min-width: 0;
+}
+
+.pricing-list li span:last-child {
+  line-height: 1.45;
+}
+
+/* Button pinned to bottom */
+.pricing-foot .btn {
+  margin-top: auto;
+}
+
+/* Featured lift only on XL+ */
+@media (min-width: 1200px) {
+  .pricing-card.featured {
+    transform: translateY(-12px);
+  }
+}
+/* Slightly tighter on phones */
 @media (max-width: 575.98px) {
-  .pricing-card .card-body,
-  .pricing-card .card-footer {
+  .pricing-head {
+    min-height: unset;
+    padding: 1.25rem;
+  }
+  .pricing-foot {
     padding: 1.25rem;
   }
 }
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .pricing-card {
-    max-width: 360px;
-  }
+/* Price sizing – prevent wrap without overflow */
+.pricing-card .display-4 {
+  font-size: clamp(2.5rem, 4.6vw, 3.25rem);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
