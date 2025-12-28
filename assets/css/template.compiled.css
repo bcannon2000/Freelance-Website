@@ -1,0 +1,50 @@
+/* Pricing layout */
+.pricing-row {
+  justify-content: center;
+}
+
+.pricing-row > .col {
+  display: flex;
+  justify-content: center;
+}
+
+/* Card structure */
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.pricing-card .card-footer {
+  margin-top: auto;
+}
+
+/* Featured card (desktop only) */
+@media (min-width: 500px) {
+  .pricing-card.featured {
+    transform: translateY(-12px);
+  }
+}
+/* Tablet adjustments */
+@media (max-width: 1199.98px) {
+  .pricing-card {
+    max-width: 520px;
+  }
+  .pricing-card.featured {
+    transform: none;
+  }
+}
+/* Mobile tightening */
+@media (max-width: 575.98px) {
+  .pricing-card .card-body,
+  .pricing-card .card-footer {
+    padding: 1.25rem;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .pricing-card {
+    max-width: 360px;
+  }
+}
