@@ -43,9 +43,18 @@
   margin-bottom: 3.6rem !important;
 }
 
+.p-4 {
+  padding: 1.8rem !important;
+}
+
 .px-0 {
   padding-right: 0 !important;
   padding-left: 0 !important;
+}
+
+.px-4 {
+  padding-right: 1.8rem !important;
+  padding-left: 1.8rem !important;
 }
 
 .py-3 {
@@ -93,12 +102,6 @@
   .py-xl-5 {
     padding-top: 3.6rem !important;
     padding-bottom: 3.6rem !important;
-  }
-}
-
-@media (min-width: 1200px) {
-  .pt-xl-5 {
-    padding-top: 3.6rem !important;
   }
 }
 

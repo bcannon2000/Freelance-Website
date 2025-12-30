@@ -168,3 +168,61 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.work-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.hero-section {
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+.navbar {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+.navbar-brand {
+  margin-right: 1rem;
+}
+
+.nav-link {
+  padding: 0 0.65rem !important;
+}
+
+footer .nav-link {
+  padding: 0 0.75rem !important;
+}
+
+.about-hero {
+  padding: 5rem 0;
+  background: linear-gradient(to bottom, #d9ecf3, #f8fbfc);
+  text-align: center;
+}
+
+.about-section {
+  max-width: 850px;
+  margin: auto;
+}
+
+.about-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.about-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 1rem;
+}
+
+.about-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
