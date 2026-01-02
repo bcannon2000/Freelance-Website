@@ -76,10 +76,6 @@
   padding-top: 1.8rem !important;
 }
 
-.pe-0 {
-  padding-right: 0 !important;
-}
-
 @media (min-width: 768px) {
   .mb-md-0 {
     margin-bottom: 0rem !important;
