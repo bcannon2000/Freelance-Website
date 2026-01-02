@@ -382,3 +382,54 @@ footer a {
   color: var(--accent) !important;
   text-shadow: 0 0 8px var(--accent), 0 0 12px var(--accent);
 }
+
+/* Brand logo color tint */
+.navbar-brand img {
+  filter: brightness(0) saturate(100%) invert(76%) sepia(98%) saturate(1812%) hue-rotate(66deg) brightness(101%) contrast(103%);
+}
+
+/* Mobile background + blur */
+@media (max-width: 991.98px) {
+  #navbarResponsive {
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(6px);
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+  }
+  .navbar-nav {
+    padding: 1.5rem !important;
+  }
+}
+/* Mobile dropdown panel */
+@media (max-width: 991.98px) {
+  #navbarResponsive {
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    /* FIX: Keep dropdown directly under navbar */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    /* FIX: Remove centering that broke positioning + toggle behavior */
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100%;
+  }
+  .navbar-nav {
+    padding: 1.5rem !important;
+  }
+}
+/* Fade-in animation only for the content, NOT the container */
+#navbarResponsive .navbar-nav {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#navbarResponsive.show .navbar-nav {
+  opacity: 1;
+  transform: translateY(0);
+}
