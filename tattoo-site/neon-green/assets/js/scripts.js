@@ -1,54 +1,94 @@
-/*!
-* Start Bootstrap - Agency v7.0.12 (https://startbootstrap.com/theme/agency)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
 window.addEventListener('DOMContentLoaded', event => {
 
-    // Navbar shrink function
-    var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
-        if (!navbarCollapsible) {
-            return;
-        }
-        if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
-        } else {
-            navbarCollapsible.classList.add('navbar-shrink')
-        }
+    const navbar = document.querySelector('#mainNav');
 
+    const navbarShrink = () => {
+        if (!navbar) return;
+        if (window.scrollY === 0) {
+            navbar.classList.remove('navbar-shrink');
+        } else {
+            navbar.classList.add('navbar-shrink');
+        }
     };
 
-    // Shrink the navbar 
     navbarShrink();
-
-    // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
 
-    //  Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
+    // Scrollspy 
+    if (navbar) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
             rootMargin: '0px 0px -40%',
         });
-    };
+    }
 
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
+    // Mobile Menu
+    const menu = document.querySelector('#navbarResponsive');
+    const toggler = document.querySelector('.navbar-toggler');
+
+    if (menu && toggler) {
+
+        menu.addEventListener('show.bs.collapse', () => {
+            navbar.classList.add('menu-open');
+        });
+
+        menu.addEventListener('hide.bs.collapse', () => {
+            navbar.classList.remove('menu-open');
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        bootstrap.ScrollSpy.getInstance(document.body)?.refresh();
+    });
+
+    document.querySelectorAll('#navbarResponsive .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            document.querySelectorAll('#navbarResponsive .nav-link')
+                .forEach(n => n.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    // Tattoo Styles Reveal
+    document.addEventListener("scroll", () => {
+        document.querySelectorAll('.tattoo-style').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight * .85) {
+                el.classList.add('visible');
             }
         });
     });
+
+    // =====================================
+    // FIXED: TEAM MEMBER FADE-IN ANIMATION
+    // =====================================
+
+    const members = document.querySelectorAll(".team-member");
+
+    if (members.length > 0) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("appear");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        members.forEach(m => observer.observe(m));
+    }
+    // ABOUT SECTION SCROLL REVEAL
+    const about = document.querySelector('.about-wrapper');
+    if (about) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    about.classList.add('visible');
+                    observer.unobserve(about);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        observer.observe(about);
+    }
 
 });
