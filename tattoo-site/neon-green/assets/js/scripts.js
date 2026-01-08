@@ -1,5 +1,5 @@
-window.addEventListener('DOMContentLoaded', event => {
-
+document.addEventListener("DOMContentLoaded", () => {
+    // NAVBAR
     const navbar = document.querySelector('#mainNav');
 
     const navbarShrink = () => {
@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', event => {
     navbarShrink();
     document.addEventListener('scroll', navbarShrink);
 
-    // Scrollspy 
+    // ScrollSpy
     if (navbar) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
@@ -27,7 +27,6 @@ window.addEventListener('DOMContentLoaded', event => {
     const toggler = document.querySelector('.navbar-toggler');
 
     if (menu && toggler) {
-
         menu.addEventListener('show.bs.collapse', () => {
             navbar.classList.add('menu-open');
         });
@@ -49,7 +48,28 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    // Tattoo Styles Reveal
+document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.querySelector('#mainNav');
+    const menu = document.querySelector('#navbarResponsive');
+
+    // When menu fully opens
+    menu.addEventListener('shown.bs.collapse', () => {
+        navbar.classList.add('menu-open');
+    });
+
+    // When menu begins closing
+    menu.addEventListener('hide.bs.collapse', () => {
+        // Keep background until animation is done
+        navbar.classList.add('menu-open');
+    });
+
+    // When menu fully finishes closing
+    menu.addEventListener('hidden.bs.collapse', () => {
+        navbar.classList.remove('menu-open');
+    });
+});
+
+    // SCROLL REVEAL FOR STYLE BLOCKS
     document.addEventListener("scroll", () => {
         document.querySelectorAll('.tattoo-style').forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight * .85) {
@@ -58,10 +78,7 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-    // =====================================
-    // FIXED: TEAM MEMBER FADE-IN ANIMATION
-    // =====================================
-
+    // TEAM MEMBER FADE-IN
     const members = document.querySelectorAll(".team-member");
 
     if (members.length > 0) {
@@ -76,19 +93,71 @@ window.addEventListener('DOMContentLoaded', event => {
 
         members.forEach(m => observer.observe(m));
     }
+
     // ABOUT SECTION SCROLL REVEAL
     const about = document.querySelector('.about-wrapper');
     if (about) {
-        const observer = new IntersectionObserver(entries => {
+        const aboutObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     about.classList.add('visible');
-                    observer.unobserve(about);
+                    aboutObserver.unobserve(about);
                 }
             });
         }, { threshold: 0.25 });
 
-        observer.observe(about);
+        aboutObserver.observe(about);
     }
+
+
+    // PORTFOLIO MODAL
+    document.querySelectorAll(".portfolio-modal").forEach(modal => {
+
+        modal.addEventListener("shown.bs.modal", () => {
+            // Reinitialize ALL carousels inside that modal
+            const carousels = modal.querySelectorAll(".carousel");
+            carousels.forEach(c => {
+                bootstrap.Carousel.getOrCreateInstance(c, {
+                    ride: false,
+                    interval: 5000,
+                    pause: "hover"
+                });
+            });
+        });
+
+        modal.addEventListener("hidden.bs.modal", () => {
+            // Reset everything when modal closes
+            const carousels = modal.querySelectorAll(".carousel");
+            carousels.forEach(c => {
+                const instance = bootstrap.Carousel.getInstance(c);
+                if (instance) instance.pause();
+
+                c.querySelectorAll(".carousel-item").forEach((item, i) => {
+                    item.classList.toggle("active", i === 0);
+                });
+
+                c.style.transform = "";
+            });
+        });
+    });
+
+    document.addEventListener("click", e => {
+        const ctrl = e.target.closest("[data-bs-slide]");
+        if (!ctrl) return;
+
+        const targetSelector = ctrl.getAttribute("data-bs-target");
+        const carousel = document.querySelector(targetSelector);
+        if (!carousel) return;
+
+        const instance = bootstrap.Carousel.getOrCreateInstance(carousel);
+
+        if (ctrl.getAttribute("data-bs-slide") === "prev") {
+            instance.prev();
+        } else {
+            instance.next();
+        }
+
+        e.preventDefault();
+    });
 
 });

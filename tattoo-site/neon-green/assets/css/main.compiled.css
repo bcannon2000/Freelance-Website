@@ -1,0 +1,1035 @@
+@charset "UTF-8";
+/* CORE */
+/* GLOBAL VARIABLES */
+/* RADIUS */
+/* SHADOWS */
+/* TRANSITIONS */
+/* Typography */
+/* Default spacing scale */
+/* GLOBAL MIXINS */
+/* BASE ELEMENT STYLES */
+body {
+  font-family: "Montserrat", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--text);
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Section spacing utility */
+.page-section {
+  padding: 5rem 0;
+}
+
+/* THEMES */
+/* Dark Theme */
+.theme-dark {
+  --bs-primary: var(--accent);
+  --bs-primary-rgb: 57, 255, 20;
+  --bg: #0f0f0f;
+  --text: #f3f3f3;
+  --accent: #39ff14;
+  --accent-rgb: 57, 255, 20;
+  --accent-hover: #4dff25;
+  --accent-hover-rgb: 77, 255, 37;
+  --card-bg: #161616;
+}
+
+/* Light Theme */
+.theme-light {
+  --bs-primary: var(--accent);
+  --bs-primary-rgb: 17, 17, 17;
+  --bg: #ffffff;
+  --text: #222222;
+  --accent: #111111;
+  --accent-rgb: 17, 17, 17;
+  --accent-hover: #333333;
+  --accent-hover-rgb: 51, 51, 51;
+  --card-bg: #f4f4f4;
+}
+
+/* Neutral Corporate Theme */
+.theme-neutral {
+  --bs-primary: var(--accent);
+  --bs-primary-rgb: 0, 112, 224;
+  --bg: #f7f9fc;
+  --text: #1e1e1e;
+  --accent: #0070e0;
+  --accent-rgb: 0, 112, 224;
+  --accent-hover: #005bbd;
+  --accent-hover-rgb: 0, 91, 189;
+  --card-bg: #ffffff;
+}
+
+/* Specialty Theme */
+.theme-special {
+  --bs-primary: var(--accent);
+  --bs-primary-rgb: 232, 185, 35;
+  --bg: #111111;
+  --text: #e8e8e8;
+  --accent: #e8b923;
+  --accent-rgb: 232, 185, 35;
+  --accent-hover: #f8d76b;
+  --accent-hover-rgb: 248, 215, 107;
+  --card-bg: #1a1a1a;
+}
+
+/* COMPONENTS */
+#mainNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  transition: background 0.35s ease, padding 0.35s ease;
+  /* Brand tint if using an image */
+}
+#mainNav .nav-link {
+  color: #fff !important;
+  opacity: 0.85;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+#mainNav .nav-link:hover {
+  color: var(--accent) !important;
+  text-shadow: 0 0 8px var(--accent);
+}
+#mainNav .nav-link.active {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+#mainNav .navbar-brand img {
+  filter: brightness(0) saturate(100%) invert(76%) sepia(98%) saturate(1812%) hue-rotate(66deg) brightness(101%) contrast(103%);
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .nav-utility-link span {
+    display: none;
+  }
+}
+#navbarResponsive {
+  z-index: 11 !important;
+}
+
+#mainNav .nav-utilities {
+  display: flex;
+  flex-shrink: 1;
+}
+
+#mainNav .nav-utilities .nav-utility-link {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+/* MOBILE MENU FIX — correct dropdown positioning */
+@media (max-width: 991.98px) {
+  #navbarResponsive {
+    position: absolute;
+    top: 100%; /* BELOW the fixed navbar */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden; /* prevent weird stretching */
+  }
+  /* Default hidden state */
+  #navbarResponsive.collapse {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  /* Visible state */
+  #navbarResponsive.collapse.show {
+    display: block !important;
+    opacity: 1 !important;
+    transform: translateY(0);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  /* Actual nav items */
+  #navbarResponsive .navbar-nav {
+    padding: 1rem;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #navbarResponsive .nav-link {
+    padding: 1rem 0 !important;
+    color: #fff !important;
+    text-align: left;
+    font-size: 1.1rem;
+  }
+}
+/* Fix LG desktop overflow */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #mainNav .navbar-nav .nav-link {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  /* Utility items take less room */
+  #mainNav .nav-utilities .nav-utility-link {
+    margin-left: 0.4rem !important;
+    margin-right: 0.4rem !important;
+  }
+  #mainNav .nav-utility-link span {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+}
+@media (max-width: 991.98px) {
+  #navbarResponsive.collapse {
+    background: rgba(0, 0, 0, 0.88) !important;
+    backdrop-filter: blur(6px);
+    padding-top: 0.75rem;
+    border-radius: 0 0 12px 12px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  }
+  #navbarResponsive .navbar-nav {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  /* When the collapse gets the .show class */
+  #navbarResponsive.show .navbar-nav {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  #navbarResponsive .nav-link {
+    padding: 1rem 0 !important;
+  }
+}
+#mainNav .navbar-brand img {
+  height: 32px;
+  width: auto;
+}
+
+/* LG screens: show icons only */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #mainNav .nav-utility-text {
+    display: none !important;
+  }
+  #mainNav .nav-utilities i {
+    font-size: 1.25rem;
+  }
+}
+/* DARKEN NAVBAR WHEN MENU ACTIVE */
+.navbar.menu-open {
+  background: rgba(0, 0, 0, 0.88) !important;
+  backdrop-filter: blur(6px);
+}
+
+/* ============================
+   BUTTON SYSTEM
+   ============================ */
+.btn-primary {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  box-shadow: 0 0 15px var(--accent);
+  transform: translateY(-2px);
+}
+
+/* XL button style for modals */
+.btn-xl {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+/* Social buttons in footer or hero */
+.btn-social {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--accent);
+  transition: all 0.2s ease;
+}
+
+.btn-social:hover {
+  background: var(--accent) !important;
+  color: #000 !important;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* GLOBAL CAROUSEL UTILITIES */
+.carousel {
+  position: relative;
+}
+
+.carousel-item {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* Carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background 0.25s ease;
+}
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================
+   NAVBAR — NEON INK STYLE
+   ============================================ */
+/* Utilities area (phone + IG) */
+.nav-utilities {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  white-space: nowrap;
+}
+
+.nav-utility-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent) !important;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.nav-utility-link:hover {
+  opacity: 1;
+}
+
+/* SECTIONS */
+.hero-tattoo {
+  position: relative;
+  height: 85vh;
+  min-height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  overflow: hidden;
+  /* background image wrapper */
+}
+.hero-tattoo .hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.4);
+  z-index: 1;
+}
+.hero-tattoo .hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+/* Neon Title */
+.hero-title {
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent), 0 0 20px rgba(var(--accent-rgb), 0.6);
+  margin-bottom: 1rem;
+}
+
+.hero-tagline {
+  font-size: 1.15rem;
+  opacity: 0.85;
+  margin-bottom: 2rem;
+}
+
+/* CTA Button */
+.hero-cta {
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* SOCIAL + CALL BUTTONS */
+.hero-buttons {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* Phone / Instagram button */
+.hero-social {
+  border: 1px solid var(--accent);
+  color: var(--accent) !important;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.25s ease;
+}
+.hero-social:hover {
+  background: var(--accent);
+  color: #000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.hero-tattoo,
+.hero-bg,
+.hero-content {
+  position: relative;
+  z-index: 0 !important;
+}
+
+#services {
+  text-align: center;
+  /* ICON STACK */
+  /* Green neon circle */
+  /* White icon inside */
+  /* MOBILE SPACING */
+}
+#services h2.section-heading {
+  text-shadow: 0 0 12px rgba(var(--accent-rgb), 0.25);
+}
+#services .section-subheading {
+  opacity: 0.75;
+}
+#services .fa-stack {
+  transition: transform 0.25s ease, filter 0.25s ease;
+  filter: drop-shadow(0 0 5px var(--accent));
+  margin-bottom: 1rem;
+}
+#services .fa-stack:hover {
+  transform: translateY(-4px) scale(1.05);
+  filter: drop-shadow(0 0 10px var(--accent));
+}
+#services .fa-circle {
+  color: var(--accent) !important;
+}
+#services .fa-inverse {
+  text-shadow: 0 0 8px rgba(var(--accent-rgb), 0.4);
+}
+#services h4 {
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 0 6px rgba(var(--accent-rgb), 0.25);
+}
+#services p {
+  opacity: 0.8;
+  max-width: 320px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  #services .col-md-4 {
+    margin-bottom: 2rem;
+  }
+}
+
+/* PORTFOLIO GRID */
+.portfolio-grid {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Card */
+.portfolio-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  /* Full-clickable area */
+}
+.portfolio-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.portfolio-card h4 {
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.portfolio-card p {
+  opacity: 0.8;
+  font-size: 0.95rem;
+  margin: 0;
+}
+.portfolio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 10px rgba(var(--bs-primary-rgb), 0.35), 0 0 20px rgba(var(--bs-primary-rgb), 0.15);
+}
+.portfolio-card:hover h4 {
+  color: var(--accent) !important;
+  text-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent);
+}
+.portfolio-card .stretched-link {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+/* ===============================
+   PORTFOLIO MODAL (Artist & Style Modals)
+   =============================== */
+.portfolio-modal .modal-dialog {
+  max-width: 900px !important;
+  margin: 1.75rem auto;
+  width: 95%;
+}
+
+.portfolio-modal .modal-content {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  border: none;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  overflow: visible;
+}
+
+/* Header */
+.portfolio-modal h2,
+.portfolio-modal h3 {
+  color: var(--text) !important;
+  text-align: center;
+}
+
+/* Close icon */
+.portfolio-modal .close-modal {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  cursor: pointer;
+  z-index: 20;
+}
+.portfolio-modal .close-modal img {
+  width: 32px;
+  height: 32px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+  filter: invert(1) brightness(1.3);
+}
+.portfolio-modal .close-modal:hover img {
+  opacity: 1;
+}
+
+/* Modal thumbnails row — scroll on mobile */
+.gallery-grid {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+.gallery-grid .gallery-thumb {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.gallery-grid .gallery-thumb:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+@media (min-width: 576px) {
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    overflow-x: visible;
+  }
+}
+/* Carousel arrows hidden on mobile */
+@media (max-width: 576px) {
+  .portfolio-carousel .carousel-control-prev,
+  .portfolio-carousel .carousel-control-next {
+    display: none;
+  }
+}
+.about-tattoo {
+  padding: 6rem 0;
+}
+
+.about-wrapper {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.about-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-lead {
+  font-size: 1.25rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+  color: var(--text);
+}
+
+.about-body {
+  color: var(--text);
+  opacity: 0.85;
+  margin-bottom: 1rem;
+}
+
+/* Image wrapper with glow */
+.about-image-wrapper {
+  position: relative;
+}
+.about-image-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border-radius: 16px;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08), transparent 70%);
+  z-index: -1;
+}
+
+.about-img {
+  max-width: 100%;
+  border-radius: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.about-img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.45), 0 0 24px rgba(var(--accent-rgb), 0.25);
+}
+
+.team-member {
+  padding: 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--accent-rgb), 0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease;
+}
+.team-member.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+.team-member:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.25);
+}
+.team-member h4 {
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+.team-member:hover h4 {
+  color: var(--accent) !important;
+  text-shadow: 0 0 8px var(--accent);
+}
+
+.team-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 1rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Entire card clickable */
+.team-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+  cursor: pointer;
+}
+.team-link:hover .team-member {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.25);
+}
+.team-link:hover h4 {
+  color: var(--accent) !important;
+  text-shadow: 0 0 8px var(--accent);
+}
+
+/* ARTIST BIO MODAL OVERRIDES */
+.portfolio-modal .artist-portrait {
+  max-width: 260px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  display: block;
+}
+
+.contact-section {
+  padding: 6rem 0;
+}
+
+.contact-section .form-control {
+  background: var(--card-bg);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  color: var(--text);
+  padding: 0.9rem 1.1rem;
+  border-radius: 10px;
+  box-shadow: none;
+  transition: border 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.contact-section .form-control::placeholder {
+  color: rgba(var(--text-rgb), 0.6);
+}
+.contact-section .form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.45);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Large textarea control */
+.form-group-textarea textarea {
+  height: 100%;
+  resize: vertical;
+}
+
+/* Submit button glow */
+#submitButton {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+#submitButton:hover {
+  background: var(--accent-hover) !important;
+  box-shadow: 0 0 15px var(--accent);
+}
+
+/* LOCATION / MAP SECTION */
+.map-wrapper {
+  width: 100%;
+  height: 350px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(var(--bs-primary-rgb), 0.25);
+}
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Optional section padding */
+.location-section {
+  padding: 5rem 0;
+}
+
+/* FOOTER — NEON INK */
+footer.footer {
+  background: #050505 !important;
+  color: var(--text) !important;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+footer.footer a {
+  color: var(--accent) !important;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+footer.footer a:hover {
+  color: var(--accent) !important;
+  text-shadow: 0 0 6px var(--accent);
+}
+
+/* Social icon circles */
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  color: #fff;
+  font-size: 1.2rem;
+  transition: border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.social-icon:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 12px rgba(var(--bs-primary-rgb), 0.75), 0 0 24px rgba(var(--bs-primary-rgb), 0.45);
+  transform: translateY(-3px);
+}
+
+/* Special styling for button-style social icons */
+.btn-social {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--accent);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-social:hover {
+  background: var(--accent) !important;
+  color: #000 !important;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* MODALS */
+/* ============================================
+   UNIVERSAL MODAL & CAROUSEL IMAGE RULES
+   ============================================ */
+/* Artist portraits (never cropped) */
+.artist-portrait {
+  max-width: 380px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 12px;
+}
+
+/* Tattoo gallery images (uniform size always) */
+.portfolio-carousel .carousel-item img.gallery-img {
+  width: 100% !important;
+  height: 450px !important; /* ONLY change this value to resize everything site-wide */
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Main preview image */
+.gallery-preview img {
+  width: 100%;
+  max-width: 700px;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+/* PORTFOLIO MODALS (Tattoo Styles) */
+.portfolio-modal h2,
+.portfolio-modal h3,
+.portfolio-modal h4 {
+  color: var(--text) !important;
+}
+
+.portfolio-modal .item-intro,
+.portfolio-modal .text-muted {
+  color: var(--text-light) !important;
+  opacity: 0.8;
+}
+
+.portfolio-modal {
+  /* Close button */
+  /* Carousel wrapper */
+  /* Hide arrows on small screens */
+}
+.portfolio-modal .modal-dialog {
+  max-width: 900px;
+  margin: 2rem auto;
+}
+.portfolio-modal .modal-content {
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+.portfolio-modal .close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 20;
+}
+.portfolio-modal .close-modal img {
+  width: 32px;
+  height: 32px;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+.portfolio-modal .close-modal img:hover {
+  opacity: 1;
+}
+.portfolio-modal h2,
+.portfolio-modal .item-intro {
+  text-align: center;
+}
+.portfolio-modal .portfolio-carousel {
+  max-width: 700px;
+  margin: 1rem auto;
+  border-radius: 12px;
+}
+@media (max-width: 576px) {
+  .portfolio-modal .carousel-control-prev,
+  .portfolio-modal .carousel-control-next {
+    display: none;
+  }
+}
+
+.modal-backdrop.show {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+/* TEAM BIO MODAL */
+.portfolio-modal h2,
+.portfolio-modal h3,
+.portfolio-modal h4 {
+  color: var(--text) !important;
+}
+
+.portfolio-modal .item-intro,
+.portfolio-modal .text-muted {
+  color: var(--text-light) !important;
+  opacity: 0.8;
+}
+
+.artist-modal {
+  /* Close button */
+  /* Portrait image */
+  /* Intro text + name */
+  /* Artist stats */
+  /* Gallery thumbnails */
+  /* Large preview */
+}
+.artist-modal .modal-dialog {
+  max-width: 900px;
+  margin: 1.75rem auto;
+}
+.artist-modal .modal-content {
+  background: var(--bg);
+  color: var(--text);
+  border: none;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+.artist-modal .close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+.artist-modal .close-modal img {
+  width: 32px;
+  height: 32px;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+.artist-modal .close-modal img:hover {
+  opacity: 1;
+}
+.artist-modal .artist-portrait {
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+.artist-modal .modal-body {
+  text-align: center;
+}
+.artist-modal .modal-body h2 {
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+.artist-modal .modal-body .item-intro {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+.artist-modal .list-inline-item {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.artist-modal .gallery-grid {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-top: 1.5rem;
+}
+.artist-modal .gallery-grid .gallery-thumb {
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.artist-modal .gallery-grid .gallery-thumb:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.artist-modal .gallery-preview img {
+  max-width: 700px;
+  width: 100%;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Mobile fixes */
+@media (max-width: 576px) {
+  .artist-modal .modal-dialog {
+    width: 100%;
+    margin: 0;
+  }
+  .artist-modal .modal-content {
+    border-radius: 0;
+    padding: 1rem;
+  }
+}
