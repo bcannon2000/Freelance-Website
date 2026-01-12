@@ -18,9 +18,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav align-items-lg-center ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -37,6 +37,49 @@
                 </div>
             </div>
         </section>
+        <section class="py-5 about-section" id="about">
+            <div class="container">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0"><img class="rounded img-fluid shadow" src="https://dummyimage.com/600x400/ced4da/6c757d.jpg" alt="About the company"></div>
+                    <div class="col-lg-6">
+                        <h2 class="mb-3">About Our Company</h2>
+                        <p class="lead text-muted mb-3"> Reliable, professional service trusted by homeowners and businesses across the region. </p>
+                        <p class="mb-3"> We bring years of hands-on experience, transparent pricing, and high-quality workmanship to every project — whether it's a simple repair or a full system installation. </p>
+                        <ul class="about-list">
+                            <li><i class="fas fa-check-circle"></i> Fully licensed &amp; insured</li>
+                            <li><i class="fas fa-check-circle"></i> High-quality parts &amp; workmanship</li>
+                            <li><i class="fas fa-check-circle"></i> Fast response times</li>
+                            <li><i class="fas fa-check-circle"></i> Satisfaction guaranteed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 contact-section" id="contact">
+            <div class="container">
+                <h2 class="text-center mb-4">Get In Touch</h2>
+                <p class="text-center text-muted mb-5"> Have a question or need service? Send us a message and we’ll get back to you as soon as possible. </p>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <form id="contactForm" class="contact-form">
+                            <div class="mb-3"><label class="form-label">Name</label><input class="form-control form-control" type="text" required=""></div>
+                            <div class="mb-3"><label class="form-label">Email</label><input class="form-control form-control" type="email" required=""></div>
+                            <div class="mb-3"><label class="form-label">Message</label><textarea class="form-control form-control" required="" rows="5"></textarea></div><button class="btn btn-primary btn-lg w-100" type="submit">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="rounded shadow-sm p-4 contact-info">
+                            <h4 class="mb-3">Contact Details</h4>
+                            <p><i class="fas fa-phone text-primary me-2"></i> (555) 123-4567</p>
+                            <p><i class="fas fa-envelope text-primary me-2"></i> info@yourbusiness.com</p>
+                            <p><i class="fas fa-map-marker-alt text-primary me-2"></i> Ogden, UT</p>
+                            <div class="mt-4 map-wrapper"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.216...etc..." allowfullscreen="">
+                        </iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="my-5 cta-bar">
             <div class="container px-4 px-lg-5">
                 <div class="text-center cta-inner">
@@ -47,20 +90,21 @@
         <section class="py-5" id="testimonials">
             <div class="container">
                 <h2 class="text-center mb-4">What Our Customers Say</h2>
-                <div class="testimonial">
-                    <div class="testimonial-stars"><span> ★★★★★ </span></div>
-                    <p class="testimonial-text"> “Absolutely amazing work! Professional, friendly, and the quality exceeded my expectations.” </p>
-                    <div class="testimonial-author"><span>— Sarah M.</span></div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-stars"><span> ★★★★☆ </span></div>
-                    <p class="testimonial-text"> “Fast service, fair prices, and extremely knowledgeable.” </p>
-                    <div class="testimonial-author"><span>— Jason R.</span></div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-stars"><span> ★★★★★ </span></div>
-                    <p class="testimonial-text"> “The attention to detail was incredible. I’ll definitely be coming back again.” </p>
-                    <div class="testimonial-author"><span>— Emily K.</span></div>
+                <div class="position-relative overflow-hidden testimonial-wrapper">
+                    <div class="testimonial-track">
+                        <div class="testimonial">
+                            <p class="testimonial-text">“Absolutely amazing work! Professional, friendly, and the quality exceeded my expectations.”</p>
+                            <div class="testimonial-author"><span>— Sarah M.</span></div>
+                        </div>
+                        <div class="testimonial">
+                            <p class="testimonial-text">“Fast service, fair prices, and extremely knowledgeable. Highly recommend!”</p>
+                            <div class="testimonial-author"><span>— Jason R.</span></div>
+                        </div>
+                        <div class="testimonial">
+                            <p class="testimonial-text">“The attention to detail was incredible. I’ll definitely be coming back again.”</p>
+                            <div class="testimonial-author"><span>— Emily K.</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -72,22 +116,54 @@
             <div class="grid-3">
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-tools"></i></div>
-                    <h3>General Repairs</h3>
-                    <p>Professional, reliable repair services done right the first time.</p><a href="#!">Learn More</a>
+                    <div class="service-content">
+                        <h3>General Repairs</h3>
+                        <p>Professional, reliable repair services done right the first time.</p><a href="#!" data-bs-toggle="modal" data-bs-target="#generalRepairs">Learn More</a>
+                    </div><span class="stretched-link"></span>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-water"></i></div>
-                    <h3>Water Systems</h3>
-                    <p>Installations, upgrades, and maintenance for all water system needs.</p><a href="#!">Learn More</a>
+                    <div class="service-content">
+                        <h3>Water Systems</h3>
+                        <p>Installations, upgrades, and maintenance for all water system needs.</p><a href="#!" data-bs-toggle="modal" data-bs-target="#generalRepairs">Learn More</a>
+                    </div><span class="stretched-link"></span>
                 </div>
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Emergency Service</h3>
-                    <p>24/7 emergency response to keep your home or business running.</p><a href="#!">Learn More</a>
+                    <div class="service-content">
+                        <h3>Emergency Service</h3>
+                        <p>24/7 emergency response to keep your home or business running.</p><a href="#!" data-bs-toggle="modal" data-bs-target="#generalRepairs">Learn More</a>
+                    </div><span class="stretched-link"></span>
                 </div>
             </div>
         </section>
     </main>
+    <section>
+        <div class="modal fade" role="dialog" tabindex="-1" id="modalRepairs" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content p-4">
+                    <h3 class="mb-3">General Repairs</h3>
+                    <p> We provide reliable, professional repair work — from fixtures to plumbing lines — done right the first time. </p><button class="btn btn-primary mt-3" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="modalRepairs-2" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content p-4">
+                    <h3 class="mb-3">General Repairs</h3>
+                    <p> We provide reliable, professional repair work — from fixtures to plumbing lines — done right the first time. </p><button class="btn btn-primary mt-3" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="modalRepairs-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content p-4">
+                    <h3 class="mb-3">General Repairs</h3>
+                    <p> We provide reliable, professional repair work — from fixtures to plumbing lines — done right the first time. </p><button class="btn btn-primary mt-3" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="text-light bg-dark mt-5 py-4 footer">
         <div class="container text-center">
             <div class="fw-semibold mb-2 footer-brand"><span> © </span><span id="year"></span><span> Your Business Name </span></div>
@@ -96,7 +172,6 @@
         </div>
     </footer>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
 

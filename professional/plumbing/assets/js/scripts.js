@@ -114,6 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
         adjustHeight();
         startRotation();
     });
+    document.querySelector('.navbar-toggler').addEventListener('click', () => {
+        const target = document.getElementById('navbarSupportedContent');
+        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(target);
+        bsCollapse.toggle();
+    });
 
 
     /* Auto height */
@@ -122,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
             wrapper.style.height = testimonials[index].offsetHeight + "px";
         }
     }
+    
 
     window.addEventListener("resize", adjustHeight);
     adjustHeight();
