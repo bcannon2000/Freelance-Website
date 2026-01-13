@@ -193,6 +193,19 @@
   box-shadow: 0 0 22px rgba(var(--bs-primary-rgb), 0.25);
 }
 
+.map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: var(--card-bg);
+}
+.map-container iframe {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  display: block;
+}
+
 .grid-3 {
   display: grid;
   gap: 1.75rem;
@@ -292,6 +305,8 @@
 #services {
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 @media (min-width: 768px) {
   #services {
@@ -437,6 +452,7 @@
   padding: 2rem 0;
   text-align: center;
   color: rgba(255, 255, 255, 0.75);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-brand {
@@ -464,4 +480,27 @@
 .footer-icon:hover {
   color: var(--bs-primary);
   transform: translateY(-2px);
+}
+
+.footer {
+  background: #222;
+  color: #ddd;
+}
+.footer .footer-link {
+  margin: 0 0.75rem;
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer .footer-link:hover {
+  color: var(--bs-primary);
+}
+.footer .footer-icon {
+  margin: 0 0.5rem;
+  font-size: 1.25rem;
+  color: #bbb;
+  transition: color 0.2s ease;
+}
+.footer .footer-icon:hover {
+  color: var(--bs-primary);
 }
